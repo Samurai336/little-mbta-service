@@ -33,7 +33,7 @@ If there are no errors it has installed all the necessary dependencies of the ap
 ## Running the application
 Upon successful installation of node and the projects dependencies one can now start and run the application using the following command in the project directory: 
 ```
-$ npm ./index.js 
+$ node ./index.js 
 ```
 Upon success you should see a happy greeting indicating where the service is listening and where its swagger documentation is being hosted. 
 
