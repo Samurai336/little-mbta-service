@@ -28,7 +28,7 @@ Once you have npm installed in your terminal processes to the projects directory
 $ npm install 
 ```
 
-If there are not errors it has installed all the necessary dependencies of the application. 
+If there are no errors it has installed all the necessary dependencies of the application. 
 
 ## Running the application
 Upon successful installation of node and the projects dependencies one can now start and run the application using the following command in the project directory: 
