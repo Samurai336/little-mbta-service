@@ -1,0 +1,103 @@
+swagger: "2.0"
+info:
+  title: Little MBTA Service
+  description: API description for little MBTA service
+  version: 1.0.0
+host: localhost:1337
+tags:
+  - name: MBTA Subway Line Information 
+    description: APIs for providing information on MBTA subway lines
+paths:
+  /MBTA/lines:
+    get:
+      tags:
+        - Subway Line Information 
+      summary: Returns the name and ids of all the subway lines operating on the MBTA.
+      description: Optional extended description in Markdown.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: returns a list of subway lines and Ids 
+          schema:
+            $ref: '#/definitions/subwayLines'
+  /MBTA/stops:
+    get: 
+      tags:
+        - Subway Line Information 
+      summary: Gets a list of stops on the MBTA. Providing no lineId value will return all MBTA subway stops in the system.
+      parameters:
+        - in: query
+          name: lineId
+          schema:
+            type: string
+          description: Allows for filtering by subway line id. 
+      produces:
+        - application/json
+      responses:
+        200:
+          description: returns a list of subway stops
+          schema:
+            $ref: '#/definitions/subwayStops'
+definitions:
+  subwayLines:
+    type: object
+    properties:
+      _links:
+          $ref: "#/definitions/SelfLink"
+      _embedded:
+        type: object
+        properties:
+          availableSubwayLines:
+            type: array
+            items: 
+              $ref: '#/definitions/subwayLineData' 
+  subwayLineData: 
+    type: object 
+    properties:
+      _links:
+        type: object
+        properties:
+          stops:
+            $ref: "#/definitions/LinkObj"
+      ID:
+        type: string
+        description: Identifer for a particular subway line. 
+      NAME:
+        type: string
+        description: Common name of the subway line.  
+  subwayStops:
+    type: object
+    properties:
+      _links:
+          $ref: "#/definitions/SelfLink"
+      _embedded:
+        type: object
+        properties:
+          availableStops:
+            type: array
+            items:
+              $ref: '#/definitions/subwayStopData' 
+  subwayStopData: 
+    type: object 
+    properties:     
+      NAME:
+        type: string
+        description: Common name of a subway stop.  
+  SelfLink:
+    type: object
+    properties:
+      self:
+        $ref: "#/definitions/LinkObj"
+  LinkObj:
+        type: object
+        properties:
+          href:
+            type: string
+            format: url
+        description: A list of links to related resource
+
+
+
+
+

@@ -1,0 +1,9 @@
+{
+    "selfUrl": "localhost",
+    "port": 1337,
+    "clients": {
+        "mbtaClient":{
+            "url": "https://api-v3.mbta.com"
+        }        
+    }
+}
